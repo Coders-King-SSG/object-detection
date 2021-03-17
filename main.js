@@ -1,5 +1,6 @@
 var tab = "bedroom";
 var canvas;
+var array = ["bedroom", "garden", "living_room", "street", "xmas"];
 
 var TxtRotate = function (el, toRotate, period) {
   this.toRotate = toRotate;

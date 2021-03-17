@@ -12,6 +12,25 @@ body {
     font-size: 20px!important;
 }
 
+#previous, #next {
+    border: lightcoral 2px solid;
+    border-radius: 100%;
+    color: lightcoral;
+    padding: 10px;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+}
+
+#previous {
+    float: left;
+    margin-right: 55px;
+}
+#next {
+    float: right;
+    margin-left: 55px;
+}
+
 kbd {
     font-size: 14px!important;
 }
@@ -50,5 +69,7 @@ kbd {
 }
 
 canvas {
+    border-radius: 25px;
+    box-shadow: lightcoral 8px 8px 18px;
     border: 3px solid black;
 }
