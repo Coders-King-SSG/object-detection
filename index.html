@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Detection</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  </head>
+  <body background="bg.svg">
+    <center>
+      <h3 class="btn btn-warning heading">
+        Object Detection <img src="image.svg" width="50" height="50" alt="" />
+        <hr />
+        <kbd>
+          This model
+          <span
+            class="txt-rotate"
+            data-period="2000"
+            data-rotate='[ " is supported by Coco SSD.", " helps you identify images accurately.", " has a large-scale object segmentation, and captioning dataset.", " is trained over 1.5 million images."," is free to use and no need of authentication.", " is fun!" ]'
+          ></span
+        ></kbd>
+      </h3>
+      <br>
+      <br>
+      <div class="box">
+        <div class="tabs">
+          <div
+            id="breakfast"
+            onclick="document.getElementById('garden').classList.remove('active');document.getElementById('living_room').classList.remove('active');document.getElementById('street').classList.remove('active');document.getElementById('xmas').classList.remove('active');this.classList.add('active'); tab = 'bedroom';"
+            class="item active"
+          >
+            Bedroom
+          </div>
+          <div
+            id="garden"
+            onclick="document.getElementById('breakfast').classList.remove('active');document.getElementById('living_room').classList.remove('active');document.getElementById('street').classList.remove('active');document.getElementById('xmas').classList.remove('active');this.classList.add('active'); tab = 'garden';"
+            class="item"
+          >
+            Garden
+          </div>
+          <div
+            id="living_room"
+            onclick="document.getElementById('garden').classList.remove('active');document.getElementById('breakfast').classList.remove('active');document.getElementById('street').classList.remove('active');document.getElementById('xmas').classList.remove('active');this.classList.add('active'); tab = 'living_room';"
+            class="item"
+          >
+            Living Room
+          </div>
+          <div
+            id="street"
+            onclick="document.getElementById('garden').classList.remove('active');document.getElementById('living_room').classList.remove('active');document.getElementById('breakfast').classList.remove('active');document.getElementById('xmas').classList.remove('active');this.classList.add('active'); tab = 'classroom';"
+            class="item"
+          >
+            Classroom
+          </div>
+          <div
+            id="xmas"
+            onclick="document.getElementById('garden').classList.remove('active');document.getElementById('living_room').classList.remove('active');document.getElementById('street').classList.remove('active');document.getElementById('breakfast').classList.remove('active');this.classList.add('active'); tab = 'kitchen';"
+            class="item"
+          >
+            Kitchen
+          </div>
+        </div>
+        <div id="canvas_div" style="padding: 10px;"></div>
+      </div>
+    </center>
+  </body>
+  <script src="main.js"></script>
+</html>

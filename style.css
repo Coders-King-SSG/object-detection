@@ -1,0 +1,54 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif!important;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.heading {
+    width: 100%;
+    margin: 0px;
+    font-size: 20px!important;
+}
+
+kbd {
+    font-size: 14px!important;
+}
+
+.box {
+    background-color:bisque;
+    width: 75%;
+    border-radius: 20px;
+}
+
+.tabs {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px #aaa solid;
+}
+
+.item {
+    padding: 7px;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.item:hover {
+    color: lightcoral;
+}
+
+.item.active {
+    background-color: lightcoral;
+    color: lightgoldenrodyellow;
+    border-bottom: #aaa 3px solid;
+}
+
+canvas {
+    border: 3px solid black;
+}
