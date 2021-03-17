@@ -1,7 +1,7 @@
 var tab = "bedroom";
 var canvas;
 var array = ["bedroom", "garden", "living_room", "street", "xmas"];
-
+var objects;
 var TxtRotate = function (el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -66,183 +66,65 @@ function preload() {
   img2 = loadImage("classroom.jpg");
   img3 = loadImage("living.jpg");
   img4 = loadImage("garden.jpg");
-  img5 = loadImage("kitchen.png");
+  img5 = loadImage("kitchen.jpg");
 }
 
 function setup() {
   canvas = createCanvas(600, 380);
   canvas.parent("canvas_div");
+  objectDetector = ml5.objectDetector('cocossd', modelLoaded);
 }
 
-function fillup() {
-  
-    noFill();
-    if(tab != 'kitchen') {
-
-    stroke('red');
-    } else {
-      stroke('#fff')
-    }
-    strokeWeight(3)
-    textSize(20)
-}
-
-function textfillup() {
-  
-    strokeWeight(1)
-    if (tab!="kitchen") {
-      
-    fill('red');
-    } else {
-      fill('#fff')
-    }
-}
 
 function draw() {
   if (tab == "bedroom") {
-    image(img1, 0, 0, 600, 380);
-    fillup();
-    rect(125,81,180,150);
-    textfillup();
-    text('Window',115,75);
-    fillup();
-    rect(33.3,110.3, 90, 220);
-    textfillup();
-    text('Mirror', 30, 105)
-    fillup();
-    rect(321.7,169.1,40,50)
-    textfillup();
-    text('Lamp', 316.7,164.1);
-    fillup();
-    rect(212.8,188.4,300,150)
-    textfillup();
-    text('Bed', 447.8,183.4)
-    fillup();
-    rect(519.3,190.4,30,50)
-    textfillup();
-    text('Vase', 510.3,190.4)
-    
-    fillup();
-    rect(396.3,104.3,100,50)
-    textfillup();
-    textSize(15)
-    text('Photo Frames', 390.3,100.3)
-  } /*garden*/else if (tab == "garden") {
-    image(img4, 0, 0, 600, 380);
-    
-    fillup();
-    rect(156.3,174.2,75,150);
-    textfillup();
-    text('Spade',156.3,165.2);
-    fillup();
-    rect(432.6,210.7, 60, 70);
-    textfillup();
-    text('Bucket',432.6,200.7)
-    fillup();
-    rect(13.1,289.7,130,70)
-    textfillup();
-    text('Can', 35.1,283.7);
-    fillup();
-    rect(196.6,303.9,400,100)
-    textfillup();
-    text('Bedding', 246.6,293.9)
-    fillup();
-    rect(317.6,12.0,250,150)
-    textfillup();
-    text('House', 320.6,30)
-    
-    fillup();
-    rect(12.1,10.0,120,90)
-    textfillup();
-    text('Tree',16.1,27.0)
-  } else if (tab == "living_room") {
-    image(img3, 0, 0, 600, 380);
-    
-    fillup();
-    rect(448.5,40.6,120,60);
-    textfillup();
-    text('Shelf',448.5,40.6 - 5);
-    fillup();
-    rect(476.8,152.4, 70, 75);
-    textfillup();
-    text('Lamp',476.8,152.4 - 5)
-    fillup();
-    rect(135.4,155.5,350,170)
-    textfillup();
-    text('Sofa', 135.4,155.5 - 5);
-    fillup();
-    rect(16.2,94.5,130,160)
-    textfillup();
-    text('Vase', 16.2,94.5 - 5)
-    fillup();
-    rect(176.8,37.6,200,70)
-    textfillup();
-    text('Photo Frames', 176.8,37.6 - 5)
+    image(img1, 0,0,600, 380)
+    objectDetector.detect(img1, gotResults)
   } else if (tab == "kitchen") {
-    image(img5, 0, 0, 600, 380);
-    
-    fillup();
-    rect(39.4,110.8,125,180);
-    textfillup();
-    text('Fridge',39.4,110.8 - 5);
-    fillup();
-    stroke('red')
-    noFill();
-    rect(402.6,210.7, 130, 80);
-    textfillup();
-    stroke('red')
-    fill('red')
-    text('Oven',402.6+5,200.7 + 30)
-    fillup();
-    rect(177.8,218.4,230,70)
-    textfillup();
-    text('Shelf', 177.8,218.4 - 5);
-    fillup();
-    stroke('red')
-    noFill()
-    rect(401.0,195.1,100,20)
-    textfillup();
-    text('Stove', 401.0,195.1 - 5)
-    fillup();
-    rect(519.2,182.9,50,30)
-    textfillup();
-    text('Toaster', 519.2,182.9 - 5)
-    fillup();
-    rect(399.0,128.0,130,30)
-    textfillup();
-    text('Chimney', 399.0,128.0 - 5);
-    fillup();
-    rect(162.6,1.0,60,100)
-    textfillup();
-    text('Lamp', 166.6,1.0 + 85)
-    fillup();
-    rect(296.0,175.8,70,50)
-    textfillup();
-    text('Basin', 296.0,175.8 - 5)
+    image(img5, 0,0,600, 380)
+    objectDetector.detect(img5, gotResults)
   } else if (tab == "classroom") {
-    image(img2, 0, 0, 600, 380);
-    
-    fillup();
-    rect(253.5,14.2,320,180);
-    textfillup();
-    text('Blackboard',253.5,14.2 - 5);
-    fillup();
-    rect(56.6,14.2, 180, 160);
-    textfillup();
-    text('World Map',56.6,14.2 - 5)
-    fillup();
-    rect(21.2,230.6,180,145)
-    textfillup();
-    text('Desk', 21.2,230.6 - 5);
-    fillup();
-    rect(212.2,230.6,180,145)
-    textfillup();
-    text('Desk', 212.2,230.6 - 5)
-    fillup();
-    rect(412.2,230.6,180,145)
-    textfillup();
-    text('Desk', 412.2,230.6 - 5)
+    image(img2, 0,0,600, 380)
+    objectDetector.detect(img2, gotResults)
+  } else if(tab == "garden") {
+    image(img4, 0,0,600, 380)
+    objectDetector.detect(img4, gotResults)
+  }else if(tab == "living_room") {
+    image(img3, 0,0,600, 380)
+    objectDetector.detect(img3, gotResults)
   }
+}
+
+function gotResults(error, results) {
+  if(error){
+    console.error(error);
+  } else {
+    console.log(results);
+    document.getElementById('number').innerHTML = results.length;
+    for (let i = 0; i < results.length; i++) {
+      noFill();
+      stroke('lightcoral')
+      strokeWeight(3);
+      obj = results[i].label;
+      obje = obj.charAt(0).toUpperCase() + obj.slice(1);
+      wid = results[i].width;
+      hgt = results[i].height;
+      xpos = results[i].x;
+      ypos = results[i].y;
+      acr = results[i].confidence;
+      textSize(18);
+      textFont('Arial');
+      rect(xpos, ypos, wid, hgt);
+      fill('lightcoral')
+      strokeWeight(1)
+      text(obje, xpos, ypos-5);
+    }
+  }
+}
+
+function modelLoaded() {
+  console.log('Model initialized.');
+  document.getElementById('status').innerHTML = 'Model is loaded.';
 }
 
 function doubleClicked() {
